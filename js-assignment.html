@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="message">Hello world!!</p>
+    <button id="changeBtn">Change message</button>
+    
+</body>
+
+<script>
+    document.getElementById("changeBtn").addEventListener('click', () => {
+        document.getElementById("message").textContent = document.getElementById("message").textContent == "How are you?"? "Hello world!" : "How are you?" 
+    })
+</script>
+</html>
