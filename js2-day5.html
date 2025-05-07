@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="register">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="" />
+        </div>
+        <br>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="" />
+            <span id="emailError"></span>
+        </div>
+        <br>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" value="" />
+            
+        </div>
+        <br>
+        <div>
+            <label for="cPassword">Confirm Password</label>
+            <input type="password" id="cPassword" name="cPassword" value="" />
+            <span id="passError"></span>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="submit-message"></div>
+</body>
+<script>
+    document.querySelector("#register").addEventListener('submit', (event)=> {
+        event.preventDefault()
+        const formData = new FormData(document.querySelector("#register"));
+        let valid = true;
+
+        if(!formData.get('email').match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+            document.querySelector("#emailError").textContent = "Email is not valid";
+            valid = false;
+        }
+        else document.querySelector("#emailError").textContent = '';
+
+        if(formData.get('password') != formData.get('cPassword')) {
+            document.querySelector("#passError").textContent = "Password doesn't match";
+            valid = false;
+        }
+        else document.querySelector("#passError").textContent = '';
+
+        if(valid) {
+            document.querySelector("#submit-message").textContent = "Form submitted successfully!"
+        }
+        else {
+            document.querySelector("#submit-message").textContent = ""
+            return
+        }
+        
+        
+    })
+</script>
+</html>
