@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dummy HTML Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header,
+        footer {
+            background: #f2f2f2;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        .highlight {
+            border: 5px solid yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form action="" id="eleForm">
+            <label for="element">Enter the element to highlight</label>
+            <input type="text" name="element" />
+
+            <button type="submit">Submit</button>
+        </form>
+
+
+    </div>
+
+    <header>
+        <h1>Welcome to My Dummy Page</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>About This Page</h2>
+        <p>This page is <strong>just a dummy</strong> used for demonstrating various <em>HTML tags</em>.</p>
+        <blockquote cite="https://example.com">
+            "HTML is the foundation of web development."
+        </blockquote>
+        <abbr title="World Health Organization">WHO</abbr> is a global health organization.
+        <address>
+            Written by John Doe<br>
+            Visit us at: <a href="https://example.com">Example.com</a><br>
+            123 Web Street, Internet City
+        </address>
+    </section>
+
+    <section>
+        <h2>Form Example</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message"></textarea><br><br>
+
+            <label>Choose a gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+
+            <label for="hobbies">Select hobbies:</label><br>
+            <input type="checkbox" id="reading" name="hobbies" value="reading">
+            <label for="reading">Reading</label><br>
+            <input type="checkbox" id="traveling" name="hobbies" value="traveling">
+            <label for="traveling">Traveling</label><br><br>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="uk">UK</option>
+            </select><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Table Example</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Profession</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alice</td>
+                    <td>28</td>
+                    <td>Engineer</td>
+                </tr>
+                <tr>
+                    <td>Bob</td>
+                    <td>32</td>
+                    <td>Designer</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Multimedia</h2>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image" />
+        <video width="320" height="240" controls>
+            <source src="sample.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video><br>
+        <audio controls>
+            <source src="sample.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dummy Page. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('#eleForm').addEventListener('submit', (event) => {
+            event.preventDefault()
+            const elements = document.querySelectorAll(`.highlight`);
+            elements.forEach(element => {
+                element.classList.remove('highlight');
+            });
+            const formData = new FormData(document.getElementById('eleForm'));
+            const ele = formData.get('element')
+
+            const eleList = document.querySelectorAll(ele)
+            eleList.forEach(element => {
+                element.classList.add('highlight')
+            });
+        })
+    </script>
+</body>
+
+</html>
