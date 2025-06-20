@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        .main {
+            position: relative;
+        }
+        .modal{
+            display: none;
+            background-color: gray;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+        .show {
+            display: flex;
+        }
+        .modal-content {
+            height: 400px;
+            width: 400px;
+            background-color: white;
+            padding: 10px;
+        }
+        span {
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <button id="openModal">Open Modal</button>
+
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <span id="close" class="close">&times;</span>
+                <p>Modal content</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    const modal = document.getElementById('modal');
+    document.getElementById('openModal').onclick = () => modal.classList.add('show');
+    document.getElementById('close').onclick = () => modal.classList.remove('show');
+    modal.onclick = e => {
+        if(e.target == modal) modal.classList.remove('show');
+    }
+    window.addEventListener('keydown', (e) => {
+        if(e.key == "Escape") modal.classList.remove('show');
+    })
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task manager</title>
+</head>
+<body>
+    <div>
+        <h3>Task manager</h3>
+        <ul id="task-list">
+            
+        </ul>
+
+        <div>
+            <input type="text" name="task" id="task">
+            <button class="add">Add task</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelector('.add').addEventListener('click', (event) => {
+            event.preventDefault();
+            const task = document.querySelector('#task').value;
+            const li = document.createElement('li');
+            li.textContent = task;
+            document.querySelector('#task-list').appendChild(li)
+        })
+    </script>
+</body>
+
+</html>

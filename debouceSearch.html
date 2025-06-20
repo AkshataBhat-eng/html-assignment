@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="search" placeholder="search">
+    </div>
+
+    <script>
+        function debounce(fn, delay=300) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    fn.apply(this, args)
+                }, delay);
+            }
+        }
+
+        const input = document.querySelector('#search');
+        input.addEventListener('input', debounce((e) => {
+            console.log(e.target.value)
+        }))
+    </script>
+</body>
+</html>

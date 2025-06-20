@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Task</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        h2 {
+            color: #354a2f;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            background-color: #f5f5d5;
+            align-items: center;
+        }
+
+        .content {
+            width: 100%;
+            padding: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-task {
+            display: flex;
+            justify-content: flex-end;
+            width: 80%;
+            gap: 10px;
+        }
+
+        .task-name {
+            background-color: #f5f5d5;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #354a2f;
+            padding: 0 8px;
+        }
+
+        .add {
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background-color: #a3b68a;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .task-list {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .tasks {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .task-item {
+            background-color: #c7b793;
+            padding: 0 20px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+
+        .remove {
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            border-radius: 4px;
+            color: #ffffff;
+            background-color: #354a2f;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Interview Task Generator</h2>
+        <div class="content">
+            <div class="add-task">
+                <input type="text" class="task-name" placeholder="Enter the task">
+                <button class="add">Add Task</button>
+            </div>
+            <div class="task-list">
+                <ul class="tasks">
+                    <li class="task-item">
+                        <p>This is task 1</p> <button class="remove">x</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector(".add").addEventListener('click', (e) => {
+            e.preventDefault();
+            const taskInput = document.querySelector('.task-name');
+            const task = taskInput.value.trim();
+
+            if (task === '') return; 
+
+            const taskList = document.querySelector('.tasks');
+            const newTask = document.createElement('li');
+            newTask.setAttribute('class', 'task-item');
+
+            const taskName = document.createElement('p');
+            taskName.textContent = task;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.setAttribute('class', 'remove');
+            removeBtn.textContent = 'x';
+
+            newTask.appendChild(taskName);
+            newTask.appendChild(removeBtn);
+            taskList.appendChild(newTask);
+
+            taskInput.value = '';
+        });
+
+        document.querySelector(".tasks").addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove')) {
+                e.target.parentNode.remove();
+            }
+        });
+    </script>
+</body>
+
+</html>
